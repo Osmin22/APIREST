@@ -27,7 +27,9 @@ const getTipoDirector = async (req=request,res=response) => {
     try{
 
     }catch(e){
-        console.error(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 
 }
@@ -36,7 +38,9 @@ const putTipoDirector = async () => {
     try{
         c
     }catch(e){
-        console.error(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 }
 
@@ -44,7 +48,9 @@ const deleteTipoDirector = async () => {
     try{
 
     }catch(e){
-        console.error(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 }
 

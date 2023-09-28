@@ -32,7 +32,9 @@ const getgenero = async (req=request,res=response) => {
     try{
 
     }catch(e){
-        console.log(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 }
 
@@ -42,7 +44,9 @@ const putgenero = async (req=request,res=response) => {
     try{
 
     }catch(e){
-        console.log(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 }
 

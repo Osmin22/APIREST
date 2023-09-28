@@ -5,7 +5,9 @@ const getTipoProductora = async (req=request,res=response) => {
     try{
 
     }catch(e){
-        console.error(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 }
 
@@ -34,7 +36,9 @@ const putTipoProductora = async (req=request,res=response) => {
     try{
 
     }catch(e){
-        console.error(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 }
 
@@ -42,7 +46,9 @@ const deleteTipoProductora = async (req=request,res=response) => {
     try{
 
     }catch(e){
-        console.error(e)
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
     }
 }
 
