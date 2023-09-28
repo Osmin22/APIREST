@@ -8,11 +8,61 @@ const Media = Schema({
     serial:{
         type:Number,
         unique:true,
-        require:true
+        required:true
+    },
+    sinopsis:{
+        type:String,
+        require:true,
+        default:''
+    },
+    url:{
+        type:String,
+        required:true,
+        default:''
+    },
+    image:{
+        type:img
+    },
+    datetimecreate:{
+        type:Date,
+        required:true,
+        default:new Date()
+    },
+    datetimeupdate:{
+        type:Date,
+        required:true,
+        default:''
+    },
+    anoestreno:{
+        type:Date,
+        required:true,
+        default:''
     },
     title:{
         type:String,
-        require:true,
+        required:true,
         unique:true
+    },
+    firstgenero:{
+        type:Schema.Types.ObjectId,
+        ref:'TipoGenero',
+        required:true
+    },
+    firstdirector:{
+        type:Schema.Types.ObjectId,
+        ref:'TipoDirector',
+        required:true
+    },
+    firstproductora:{
+        type:Schema.Types.ObjectId,
+        ref:'TipoProductora',
+        required:true
+    },
+    firsttipo:{
+        type:Schema.Types.ObjectId,
+        ref:'Tipo',
+        required:true
     }
 })
+
+module.exports = model('TipoMedia')

@@ -1,17 +1,14 @@
 const https = require('https')
 const app = require('./app')
-const {connection} = require('./configuration/configurationCBD')
+/* const {connection} = require('./configuration/configurationCBD') */
+const {conn} = require('./configuration/configurationBDMA')
+const env = require('dotenv').config()
 
-const conn = connection
+/* const connectionCBD = connection */
+const connectionBDMA = conn()
+app.set('port',process.env.PORT || 4000)
 
-app.get('/',(req,res) => {
-    req.params.time = Date.now()
-    res.json({time:`${req.params.time}`})
-    res.end()
-})
 
-/* const server = https.createServer(app) */
-
-app.listen(3000,'127.0.0.1', () => {
-    console.log(`https//127.0.0.1:${3000}`)
+app.listen(app.get('port'),'127.0.0.1', () => {
+    console.log(`http://127.0.0.1:${app.get('port')}`)
 })

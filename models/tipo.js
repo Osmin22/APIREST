@@ -3,21 +3,22 @@ const {Schema,model} = require('mongoose')
 const Tipo = Schema({
     name:{
         type:String,
-        require:true
+        required:true
     },
     datetimecreate:{
         type:Date,
-        require:true,
+        required:true,
         default: new Date()
     },
     datetimeupdate:{
         type:Date,
-        require:true,
+        required:true,
         default:''
     },
     description:{
         type:Date,
-        require:true
+        required:true,
+        default:''
     }
 })
 

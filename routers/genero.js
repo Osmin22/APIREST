@@ -1,9 +1,9 @@
 const express = require('express')
-const router = express.Router()
+const genero = express.Router()
 const {getgenero,postgenero,putgenero} = require('../controllers/genero')
 
-router.use('/genero',getgenero)
-router.post('/genero',postgenero)
-router.put('/genero',putgenero)
+genero.use('/genero',getgenero)
+genero.post('/genero',postgenero)
+genero.put('/genero',putgenero)
 
-module.exports = router
+module.exports = genero

@@ -3,29 +3,31 @@ const {Schema,model} = require('mongoose')
 const Productora = Schema({
     name:{
         type:String,
-        require:true
+        required:true
     },
     state:{
         type:String,
-        require:true
+        required:true,
+        default:true
     },
     datetimecrate:{
         type:Date,
-        require:true,
+        required:true,
         default:new Date()
     },
     datetimeupdate:{
         type:Date,
-        require:true,
+        required:true,
         default:''
     },
     sloga:{
         type:String,
-        require:true
+        required:true
     },
     description:{
         type:String,
-        require:true
+        required:true,
+        default:''
     }
 })
 

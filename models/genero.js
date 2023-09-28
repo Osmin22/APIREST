@@ -3,27 +3,27 @@ const {Schema,model} = require('mongoose')
 const Genero = Schema({
     name:{
         type:String,
-        require:true,
-        default:''
+        required:true
     },
     status:{
         type:Boolean,
-        require:true,
+        required:true,
         default:true
     },
     datetimecreate:{
         type:Date,
-        require:true,
+        required:true,
         default:new Date()
     },
     datetimeupdate:{
         type:Date,
-        require:false,
+        required:false,
         default:''
     },
     description:{
         type:String,
-        require:true
+        required:true,
+        default:''
     }
 })
 
