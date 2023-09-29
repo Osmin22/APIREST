@@ -14,13 +14,18 @@ const getTipoProductora = async (req=request,res=response) => {
 const postTipoProductora = async (req=request,res=response) => {
     try{
         const name = req.body.name ? req.body.name.toUpperCase():''
+        const sloga = req.body.sloga ? req.body.sloga.toUpperCase():'' 
         const tipoProductora = TipoProductora.findOne({name})
 
         if(tipoProductora){
             return res.status(404).json({name:name})
         }
 
-        const data = {name}
+        const data = {
+            name:name,
+            sloga:sloga
+        }
+        
         const tipoproductora = new TipoProductora(data)
         await tipoproductora.save()
         return res.status(201).json(data)

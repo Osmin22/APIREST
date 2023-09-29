@@ -5,13 +5,18 @@ const {request,response} = require('express')
 const postgenero = async (req=request,res=response) => {
     try{
         const name = req.body.name ? req.body.name.toUpperCase() : ''
-        const tipogeneroDB = await TipoGenero.findOne({name})
+        const description = req.body.description ? req.body.description.toUpperCase() : ''
+        const tipogeneroname = await TipoGenero.findOne({name})
 
-        if(tipogeneroDB){
+        if(ipogeneroname){
             return response.status(404).json({name:'Acción'})
         }
 
-        const data = {name}
+        const data = {
+            name:name,
+            description:description
+        }
+
         const tipogenero = new TipoGenero(data)
         await tipogenero.save()
         console.info(tipogenero)
