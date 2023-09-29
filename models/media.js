@@ -17,11 +17,13 @@ const Media = Schema({
     },
     url:{
         type:String,
-        required:true,
+        required:false,
         default:''
     },
     image:{
-        type:img
+        type:String,
+        require:false,
+        default:''
     },
     datetimecreate:{
         type:Date,
