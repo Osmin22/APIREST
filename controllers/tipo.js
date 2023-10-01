@@ -1,9 +1,21 @@
 const Tipo = require('../models/tipo')
 const {request,response} = require('express')
 
+const getTipoFirst = async (req=request,res=response) => {
+    try{
+        const {id} = req.query
+        const tipo = await tipo.findOne({id})
+    }catch(e){
+        return res.status(500).json({
+            status:'Not pettion'+e
+        })
+    }
+}
+
 const getTipo = async (req=request,res=response) => {
     try{
-
+        const {status} = req.query
+        const tipo = await tipo.find({status})
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -39,7 +51,11 @@ const postTipo = async (req=request,res=response) => {
 
 const putTipo = async (req=request,res=response) => {
     try{
+        const body = req.body
+        const id = req.query
 
+        const tipo = await Tipo.findByIdAndUpdate(id,body,{new:true})
+        return res.json(tipo)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -49,6 +65,20 @@ const putTipo = async (req=request,res=response) => {
 
 const deleteTipo = async (req=request,res=response) => {
     try{
+        const name = req.body.name ? req.body.name.toUpperCase():''
+        const tipodelete = new Tipo.findOne({name})
+
+        if(!tipodelete){
+            return res.status().json({status:'Error delete'})
+        }
+
+        const data = {
+            name:name
+        }
+
+        const tipo = new Tipo()
+        await tipo.deleteOne(data)
+        return res.status().json({status:'Ok'})
 
     }catch(e){
         return res.status(500).json({
@@ -57,4 +87,4 @@ const deleteTipo = async (req=request,res=response) => {
     }
 }
 
-module.export = {deleteTipo,putTipo,postTipo,getTipo}
+module.exports = {deleteTipo,putTipo,postTipo,getTipoFirst,getTipo}

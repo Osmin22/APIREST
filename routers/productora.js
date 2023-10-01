@@ -1,9 +1,10 @@
 const express = require('express')
 const productora = express.Router()
-const {postTipoProductora,getTipoProductora,deleteTipoProductora,putTipoProductora} = require('../controllers/productora')
+const {postTipoProductora,getTipoProductora,getTipoProductoraFirst,deleteTipoProductora,putTipoProductora} = require('../controllers/productora')
 
 productora.post('/productora',postTipoProductora)
-productora.get('/productora',getTipoProductora)
+productora.get('/productoras',getTipoProductora)
+productora.get('/productora',getTipoProductoraFirst)
 productora.put('/productora',putTipoProductora)
 productora.delete('/productora',deleteTipoProductora)
 

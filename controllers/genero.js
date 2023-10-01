@@ -8,7 +8,7 @@ const postgenero = async (req=request,res=response) => {
         const description = req.body.description ? req.body.description.toUpperCase() : ''
         const tipogeneroname = await TipoGenero.findOne({name})
 
-        if(ipogeneroname){
+        if(tipogeneroname){
             return response.status(404).json({name:'Acción'})
         }
 
@@ -29,13 +29,21 @@ const postgenero = async (req=request,res=response) => {
     
 }
 
-
+const getgenerofirst = async (req=request,res=response) => {
+    try{
+        const {id} = req.query
+        const genero = await TipoGenero.findOne({id})
+        return res.json(genero)
+    }catch(e){
+        return res.status(500).json({status:'Error get genero..'})
+    }
+}
 
 const getgenero = async (req=request,res=response) => {
-
-
     try{
-
+        const {status} = req.query
+        const genero = await TipoGenero.find({status})
+        return res.json(genero)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -44,10 +52,13 @@ const getgenero = async (req=request,res=response) => {
 }
 
 const putgenero = async (req=request,res=response) => {
-
-    
     try{
+        const body = req.body
+        const id = req.params.id
 
+        body. datetimeupdate = new Date()
+        const genero = await TipoGenero.findByIdAndUpdate(id,body,{new:true})
+        return res.json(genero)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -55,4 +66,4 @@ const putgenero = async (req=request,res=response) => {
     }
 }
 
-module.exports = {getgenero,postgenero,putgenero}
+module.exports = {getgenero,getgenerofirst,postgenero,putgenero}

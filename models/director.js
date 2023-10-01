@@ -16,7 +16,7 @@ const Director  = Schema({
         default: new Date()
     },
     datetimeupdate:{
-        type:date,
+        type:Date,
         required:false,
         default:''
     }

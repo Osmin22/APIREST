@@ -67,4 +67,4 @@ const Media = Schema({
     }
 })
 
-module.exports = model('TipoMedia')
+module.exports = model('TipoMedia',Media)
