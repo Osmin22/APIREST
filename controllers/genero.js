@@ -9,7 +9,7 @@ const postgenero = async (req=request,res=response) => {
         const tipogeneroname = await TipoGenero.findOne({name})
 
         if(tipogeneroname){
-            return response.status(404).json({name:'Acción'})
+            return res.status(404).json({name:'Acción'})
         }
 
         const data = {
@@ -23,7 +23,7 @@ const postgenero = async (req=request,res=response) => {
         return res.status(201).json(tipogenero)
     }catch(e){
         return res.status(500).json({
-            status:'Not pettion'+e
+            status:'Not pettion '+e
         })
     }
     

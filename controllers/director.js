@@ -4,13 +4,15 @@ const {request,response} = require('express')
 const postTipoDirector = async (req=request,res=response) => {
     try{
         const name = req.body.name ? req.body.name.toUpperCase() : ''
-        const tipoDirectorDB = TipoDirector.finOne({name})
+        const tipoDirectorDB = TipoDirector.findOne({name})
         
         if(tipoDirectorDB){
-            return res.status(404).json({error:`${name}`})
+            return res.status(404).json({name:'Acción'})
         }
 
-        const data = {name}
+        const data = {
+            name:name
+        }
         const tipodirector = new TipoDirector(data)
         await tipodirector.save()
         console.log(tipoDirector)

@@ -18,7 +18,7 @@ const Genero = Schema({
     datetimeupdate:{
         type:Date,
         required:false,
-        default:''
+        default:new Date
     },
     description:{
         type:String,
