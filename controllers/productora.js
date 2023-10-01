@@ -28,16 +28,19 @@ const getTipoProductora = async (req=request,res=response) => {
 const postTipoProductora = async (req=request,res=response) => {
     try{
         const name = req.body.name ? req.body.name.toUpperCase():''
-        const sloga = req.body.sloga ? req.body.sloga.toUpperCase():'' 
-        const tipoProductora = TipoProductora.findOne({name})
+        const sloga = req.body.sloga ? req.body.sloga.toUpperCase():''
+        const description = req.body.description ? req.body.description.toUpperCase():''
+
+        const tipoProductora = await TipoProductora.findOne({name})
 
         if(tipoProductora){
-            return res.status(404).json({name:name})
+            return res.status(404).json({name:'Acción'})
         }
 
         const data = {
             name:name,
-            sloga:sloga
+            sloga:sloga,
+            description:description
         }
 
         const tipoproductora = new TipoProductora(data)

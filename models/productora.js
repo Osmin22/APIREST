@@ -18,7 +18,7 @@ const Productora = Schema({
     datetimeupdate:{
         type:Date,
         required:true,
-        default:''
+        default:new Date()
     },
     sloga:{
         type:String,

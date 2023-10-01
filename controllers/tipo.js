@@ -30,7 +30,7 @@ const postTipo = async (req=request,res=response) => {
         const tiponame = await Tipo.findOne({name})
 
         if(tiponame){
-            return res.status(501).json({status:'Error'})
+            return res.status(404).json({name:'Acción'})
         }
 
         const data = {
