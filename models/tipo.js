@@ -13,10 +13,10 @@ const Tipo = Schema({
     datetimeupdate:{
         type:Date,
         required:true,
-        default:''
+        default:new Date()
     },
     description:{
-        type:Date,
+        type:String,
         required:true,
         default:''
     }

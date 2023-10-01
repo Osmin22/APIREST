@@ -45,6 +45,7 @@ const postTipoProductora = async (req=request,res=response) => {
 
         const tipoproductora = new TipoProductora(data)
         await tipoproductora.save()
+        console.log(tipoproductora)
         return res.status(201).json(data)
 
     }catch(e){
