@@ -33,7 +33,7 @@ const Media = Schema({
     datetimeupdate:{
         type:Date,
         required:true,
-        default:''
+        default:new Date()
     },
     anoestreno:{
         type:Date,

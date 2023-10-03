@@ -23,7 +23,8 @@ const getTipo = async (req=request,res=response) => {
     }
 }
 
-const postTipo = async (req=request,res=response) => {
+const 
+postTipo = async (req=request,res=response) => {
     try{
         const name = req.body.name? req.body.name.toUpperCase() : ''
         const description = req.body.description ? req.body.description.toUpperCase() : ''
