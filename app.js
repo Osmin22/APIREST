@@ -1,7 +1,9 @@
 const express = require('express')
-const cookieparse = require('cookie-parse') 
+const cookieparse = require('cookie-parse')
+const cors = require('cors') 
 const app = express()
 
+app.use(cors({origin:'*'}))
 app.use(express.json())
 app.use(express.urlencoded({extends:true}))
 
