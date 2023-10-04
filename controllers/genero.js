@@ -32,7 +32,7 @@ const postgenero = async (req = request,res = response) => {
 const getgenerofirst = async (req = request,res = response) => {
     try{
         const {id} = req.query
-        const genero = await TipoGenero.findOne({id})
+        const genero = await TipoGenero.findById({id})
         return res.json(genero)
     }catch(e){
         return res.status(500).json({status:'Error get genero..'})
@@ -54,10 +54,10 @@ const getgenero = async (req = request,res = response) => {
 const putgenero = async (req = request,res = response) => {
     try{
         const body = req.body
-        const id = req.params.id
+        const _id = req.params.id
         body.datetimeupdate = new Date()
 
-        const genero = await TipoGenero.findByIdAndUpdate(id,body,{new:true})
+        const genero = await TipoGenero.findByIdAndUpdate(_id,body,{new:true})
         return res.json(genero)
     }catch(e){
         return res.status(500).json({

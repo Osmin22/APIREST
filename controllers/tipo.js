@@ -4,7 +4,7 @@ const {request,response} = require('express')
 const getTipoFirst = async (req=request,res=response) => {
     try{
         const {id} = req.query
-        const tipo = await Tipo.findOne({id})
+        const tipo = await Tipo.findById({id})
         return res.json(tipo)
     }catch(e){
         return res.status(500).json({
@@ -15,8 +15,8 @@ const getTipoFirst = async (req=request,res=response) => {
 
 const getTipo = async (req=request,res=response) => {
     try{
-        const {status} = req.query
-        const tipo = await Tipo.find({status})
+        const {name} = req.query
+        const tipo = await Tipo.find({name})
         return res.json(tipo)
     }catch(e){
         return res.status(500).json({
@@ -43,7 +43,7 @@ const postTipo = async (req=request,res=response) => {
         const tipo = new Tipo(data)
         console.info(tipo) 
         await tipo.save()
-        return res.status(201).json({status:'Ok'})
+        return res.status(201).json(tipo)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -54,9 +54,9 @@ const postTipo = async (req=request,res=response) => {
 const putTipo = async (req=request,res=response) => {
     try{
         const body = req.body
-        const id = req.query
+        const _id = req.query
 
-        const tipo = await Tipo.findByIdAndUpdate(id,body,{new:true})
+        const tipo = await Tipo.findByIdAndUpdate(_id,body,{new:true})
         return res.json(tipo)
     }catch(e){
         return res.status(500).json({

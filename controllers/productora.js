@@ -4,7 +4,7 @@ const {request,response} = require('express')
 const getTipoProductoraFirst = async (req=request,res=response) => {
     try{
         const {id} = req.query
-        const productora = await TipoProductora.findOne({id})
+        const productora = await TipoProductora.findById({id})
         return res.json(productora)
     }catch(e){
         return res.status(500).json({
@@ -58,8 +58,8 @@ const postTipoProductora = async (req=request,res=response) => {
 const putTipoProductora = async (req=request,res=response) => {
     try{
         const body = req.body
-        const id= req.query
-        const productora = await TipoProductora.findByIdAndUpdate(id,body,{new:true})
+        const _id = req.query
+        const productora = await TipoProductora.findByIdAndUpdate(_id,body,{new:true})
         return res.json(productora)
     }catch(e){
         return res.status(500).json({
@@ -83,7 +83,7 @@ const deleteTipoProductora = async (req=request,res=response) => {
 
         const tipoproductora = new TipoProductora()
         await tipoproductora.deleteOne(data)
-        return res.status().json({status:'Ok'})
+        return res.status(201).json(tipoproductora)
 
     }catch(e){
         return res.status(500).json({

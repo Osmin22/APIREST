@@ -29,7 +29,7 @@ const postTipoDirector = async (req=request,res=response) => {
 const getTipoDirectorfirst = async (req=request,res=response) => {
     try{
         const {id} = req.query
-        const director = await TipoDirector.findOne({id})
+        const director = await TipoDirector.findById({id})
         return res.json(director)
     }catch(e){
         return res.status(500).json({
@@ -55,9 +55,9 @@ const getTipoDirector = async (req=request,res=response) => {
 const putTipoDirector = async (req=request,res=response) => {
     try{
         const body = req.body
-        const id = req.query
-        const director = await TipoDirector.findByIdAndUpdate(id,body,{new:true})
-
+        const _id = req.query
+        const director = await TipoDirector.findByIdAndUpdate(_id,body,{new:true})
+        
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
