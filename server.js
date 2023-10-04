@@ -1,4 +1,3 @@
-const https = require('https')
 const app = require('./app')
 /* const {connection} = require('./configuration/configurationCBD') */
 const {conn} = require('./configuration/configurationBDMA')

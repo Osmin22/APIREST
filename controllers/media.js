@@ -5,7 +5,7 @@ const TipoGenero = require('../models/genero')
 const TipoProductora = require('../models/productora')
 const Tipo = require('../models/tipo')
 
-const posttipomedia = async (req=request,res=response) => {
+const posttipomedia = async (req = request,res = response) => {
     try{
         const data = req.body
         const {firstDirector,firstGenero,firstProductora,firstTipo} = data
@@ -53,7 +53,7 @@ const posttipomedia = async (req=request,res=response) => {
     }
 }
 
-const gettipomedia = async (req=request,res=response) => {
+const gettipomedia = async (req = request,res = response) => {
     try{
         const media = await TipoMedia.find()
         .populate({
@@ -81,7 +81,7 @@ const gettipomedia = async (req=request,res=response) => {
     }
 }
 
-const puttipomedia = async (req=request,res=response) => {
+const puttipomedia = async (req = request,res = response) => {
     try{
         const {id} = req.query
         const body = req.body
@@ -93,7 +93,7 @@ const puttipomedia = async (req=request,res=response) => {
     }
 }
 
-const deleltetipomedia = async (req=request,res=response) => {
+const deleltetipomedia = async (req = request,res = response) => {
     try{
         
     }catch(e){

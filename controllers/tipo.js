@@ -4,7 +4,8 @@ const {request,response} = require('express')
 const getTipoFirst = async (req=request,res=response) => {
     try{
         const {id} = req.query
-        const tipo = await tipo.findOne({id})
+        const tipo = await Tipo.findOne({id})
+        return res.json(tipo)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -15,7 +16,8 @@ const getTipoFirst = async (req=request,res=response) => {
 const getTipo = async (req=request,res=response) => {
     try{
         const {status} = req.query
-        const tipo = await tipo.find({status})
+        const tipo = await Tipo.find({status})
+        return res.json(tipo)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -23,8 +25,7 @@ const getTipo = async (req=request,res=response) => {
     }
 }
 
-const 
-postTipo = async (req=request,res=response) => {
+const postTipo = async (req=request,res=response) => {
     try{
         const name = req.body.name? req.body.name.toUpperCase() : ''
         const description = req.body.description ? req.body.description.toUpperCase() : ''

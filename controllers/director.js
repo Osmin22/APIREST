@@ -52,12 +52,12 @@ const getTipoDirector = async (req=request,res=response) => {
 
 }
 
-const putTipoDirector = async () => {
+const putTipoDirector = async (req=request,res=response) => {
     try{
         const body = req.body
         const id = req.query
-
         const director = await TipoDirector.findByIdAndUpdate(id,body,{new:true})
+
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
@@ -68,10 +68,10 @@ const putTipoDirector = async () => {
 const deleteTipoDirector = async (req=request,res=response) => {
     try{
         const name = req.body.name ? req.body.name.toUpperCase():''
-        const tipodirectordelete = TipoDirector.findOne({name})
+        const tipodirectordelete = await TipoDirector.findOne({name})
 
         if(!tipodirectordelete){
-            return res.status().json({statas:'Error delete'})
+            return res.status(500).json({status:'Error delete'})
         }
 
         const data = {
@@ -79,10 +79,12 @@ const deleteTipoDirector = async (req=request,res=response) => {
         }
 
         const tipodirector = new TipoDirector()
-        await tipodirector.deleteOne(data)
-        return res.status().json({status:'Ok'})
+        await tipodirector.deleteOne(tipodirectordelete)
+        console.log('Si alcanzo...')
+        return res.status(200).json({status:'Ok'})
         
     }catch(e){
+        console.log(e)
         return res.status(500).json({
             status:'Not pettion'+e
         })

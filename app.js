@@ -1,5 +1,4 @@
 const express = require('express')
-const cookieparse = require('cookie-parse')
 const cors = require('cors') 
 const app = express()
 
@@ -14,11 +13,11 @@ const productora = require('./routers/productora')
 const tipo = require('./routers/tipo')
 const testing = require('./routers/test')
 
-app.use('/api/v1/directors',director)
+app.use('/api/v1/directores',director)
 app.use('/api/v1/generos',genero)
 app.use('/api/v1/medias',media)
 app.use('/api/v1/productoras',productora)
-app.use('/api/v1/tipys',tipo)
+app.use('/api/v1/tipos',tipo)
 app.use('/api/v1/testing',testing)
 
 

@@ -2,7 +2,7 @@ const TipoGenero = require('../models/genero')
 const {request,response} = require('express')
 
 
-const postgenero = async (req=request,res=response) => {
+const postgenero = async (req = request,res = response) => {
     try{
         const name = req.body.name ? req.body.name.toUpperCase() : ''
         const description = req.body.description ? req.body.description.toUpperCase() : ''
@@ -29,7 +29,7 @@ const postgenero = async (req=request,res=response) => {
     
 }
 
-const getgenerofirst = async (req=request,res=response) => {
+const getgenerofirst = async (req = request,res = response) => {
     try{
         const {id} = req.query
         const genero = await TipoGenero.findOne({id})
@@ -39,7 +39,7 @@ const getgenerofirst = async (req=request,res=response) => {
     }
 }
 
-const getgenero = async (req=request,res=response) => {
+const getgenero = async (req = request,res = response) => {
     try{
         const {status} = req.query
         const genero = await TipoGenero.find({status})
@@ -51,12 +51,12 @@ const getgenero = async (req=request,res=response) => {
     }
 }
 
-const putgenero = async (req=request,res=response) => {
+const putgenero = async (req = request,res = response) => {
     try{
         const body = req.body
         const id = req.params.id
+        body.datetimeupdate = new Date()
 
-        body. datetimeupdate = new Date()
         const genero = await TipoGenero.findByIdAndUpdate(id,body,{new:true})
         return res.json(genero)
     }catch(e){
