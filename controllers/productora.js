@@ -59,7 +59,7 @@ const putTipoProductora = async (req=request,res=response) => {
     try{
         const body = req.body
         const _id = req.query
-        const productora = await TipoProductora.findByIdAndUpdate(_id,body,{new:true})
+        const productora = await TipoProductora.findByIdAndUpdate(_id,body)
         return res.json(productora)
     }catch(e){
         return res.status(500).json({

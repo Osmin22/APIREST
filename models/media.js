@@ -45,22 +45,22 @@ const Media = Schema({
         required:true,
         unique:true
     },
-    firstgenero:{
+    tipogenero:{
         type:Schema.Types.ObjectId,
         ref:'TipoGenero',
         required:true
     },
-    firstdirector:{
+    tipodirector:{
         type:Schema.Types.ObjectId,
         ref:'TipoDirector',
         required:true
     },
-    firstproductora:{
+    tipoproductora:{
         type:Schema.Types.ObjectId,
         ref:'TipoProductora',
         required:true
     },
-    firsttipo:{
+    tipo:{
         type:Schema.Types.ObjectId,
         ref:'Tipo',
         required:true

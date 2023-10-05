@@ -57,7 +57,7 @@ const putgenero = async (req = request,res = response) => {
         const _id = req.params.id
         body.datetimeupdate = new Date()
 
-        const genero = await TipoGenero.findByIdAndUpdate(_id,body,{new:true})
+        const genero = await TipoGenero.findByIdAndUpdate(_id,body)
         return res.json(genero)
     }catch(e){
         return res.status(500).json({
