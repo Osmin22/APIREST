@@ -68,8 +68,7 @@ const gettipomedia = async (req = request,res = response) => {
             match: {status:true}
         })
         .populate({
-            path:'Tipo',
-            match:{status:true}
+            path:'Tipo'
         })
 
         res.status().json(media)
