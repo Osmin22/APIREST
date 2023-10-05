@@ -8,38 +8,37 @@ const Tipo = require('../models/tipo')
 const posttipomedia = async (req = request,res = response) => {
     try{
         const data = req.body
-        const {firstDirector,firstGenero,firstProductora,firstTipo} = data
+        const {tipogenero,tipodirector,tipoproductora,tipo} = data
 
-        const director = await TipoDirector.findOne({
-            _id:firstDirector._id,
+        const directorDB = await TipoDirector.findOne({
+            _id:tipodirector._id,
             status:true
         })
-        if(!director){
-            return res.status(400).json({name:'Acción'})
+        if(!directorDB){
+            return res.status(400).json({name:'Director Acción'})
         }
 
-        const genero = await TipoGenero.findOne({
-            _id:firstGenero._id,
+        const generoDB = await TipoGenero.findOne({
+            _id:tipogenero._id,
             status:true
         })
-        if(!genero){
-            return res.status(400).json({name:'Acción'})
+        if(!generoDB){
+            return res.status(400).json({name:'Genero Acción'})
         }
 
-        const productora = await TipoProductora.findOne({
-            _id:firstProductora._id,
+        const productoraDB = await TipoProductora.findOne({
+            _id:tipoproductora._id,
             status:true
         })
-        if(!productora){
-            return res.status(400).json({name:'Acción'})
+        if(!productoraDB){
+            return res.status(400).json({name:'Productora Acción'})
         }
 
-        const tipo = await Tipo.findOne({
-            _id:firstTipo._id,
-            status:true
+        const tipoDB = await Tipo.findOne({
+            _id:tipo._id
         })
-        if(!tipo){
-            return res.status(400).json({name:'Acción'})
+        if(!tipoDB){
+            return res.status(400).json({name:'Tipo Acción'})
         }
 
         const media = new TipoMedia(data)
@@ -48,7 +47,7 @@ const posttipomedia = async (req = request,res = response) => {
 
     }catch(e){
         return res.status(500).json({
-            status:'Not pettion'+e
+            status:'Not pettion '+e
         })
     }
 }

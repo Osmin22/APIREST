@@ -6,7 +6,7 @@ const Tipo = require('./tipo')
 
 const Media = Schema({
     serial:{
-        type:Number,
+        type:String,
         unique:true,
         required:true
     },
