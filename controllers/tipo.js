@@ -68,21 +68,9 @@ const putTipo = async (req=request,res=response) => {
 
 const deleteTipo = async (req=request,res=response) => {
     try{
-        const name = req.body.name ? req.body.name.toUpperCase():''
-        const tipodelete = new Tipo.findOne({name})
-
-        if(!tipodelete){
-            return res.status().json({status:'Error delete'})
-        }
-
-        const data = {
-            name:name
-        }
-
-        const tipo = new Tipo()
-        await tipo.deleteOne(data)
-        return res.status().json({status:'Ok'})
-
+        const _id = req.query._id
+        const tipo = await Tipo.findByIdAndRemove(_id) 
+        return res.status(200).json(tipo)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e

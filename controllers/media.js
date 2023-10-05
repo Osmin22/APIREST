@@ -93,7 +93,9 @@ const puttipomedia = async (req = request,res = response) => {
 
 const deleltetipomedia = async (req = request,res = response) => {
     try{
-        
+        const _id = req.query._id
+        const tipomedia = await TipoMedia.findByIdAndRemove(_id)
+        return res.status(200).json(tipomedia)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e

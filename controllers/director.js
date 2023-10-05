@@ -69,21 +69,10 @@ const putTipoDirector = async (req=request,res=response) => {
 
 const deleteTipoDirector = async (req=request,res=response) => {
     try{
-        const name = req.body.name ? req.body.name.toUpperCase():''
-        const tipodirectordelete = await TipoDirector.findOne({name})
-
-        if(!tipodirectordelete){
-            return res.status(500).json({status:'Error delete'})
-        }
-
-        const data = {
-            name:name
-        }
-
-        const tipodirector = new TipoDirector()
-        await tipodirector.deleteOne(tipodirectordelete)
+        const _id = req.query._id
+        const tipodirector = await TipoDirector.findByIdAndRemove(_id)
         console.log('Si alcanzo...')
-        return res.status(200).json({status:'Ok'})
+        return res.status(200).json(tipodirector)
         
     }catch(e){
         console.log(e)

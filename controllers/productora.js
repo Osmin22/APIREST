@@ -72,24 +72,13 @@ const putTipoProductora = async (req=request,res=response) => {
 
 const deleteTipoProductora = async (req=request,res=response) => {
     try{
-        const name = req.body.name ? req.body.name.toUpperCase() : ''
-        const productoraname = TipoProductora.findOne({name}) 
-
-        if(!productoraname){
-            return res.status().json({status:'Error delete'})
-        }
-
-        const data = {
-            name:name
-        }
-
-        const tipoproductora = new TipoProductora()
-        await tipoproductora.deleteOne(data)
-        return res.status(201).json(tipoproductora)
+        const _id = req.query._id
+        const tipodirector = await TipoProductora.findByIdAndRemove(_id)
+        return res.status(200).json(tipodirector)
 
     }catch(e){
         return res.status(500).json({
-            status:'Not pettion'+e
+            status:'Not pettion '+e
         })
     }
 }
