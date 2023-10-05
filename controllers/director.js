@@ -55,8 +55,10 @@ const getTipoDirector = async (req=request,res=response) => {
 const putTipoDirector = async (req=request,res=response) => {
     try{
         const body = req.body
-        const _id = req.query
-        const director = await TipoDirector.findByIdAndUpdate(_id,body)
+        const _id = req.query._id
+        body.datetimeupdate = new Date()
+        
+        const director = await TipoDirector.findByIdAndUpdate(_id,body,{new:true})
         res.json(director)
     }catch(e){
         return res.status(500).json({

@@ -57,21 +57,21 @@ const gettipomedia = async (req = request,res = response) => {
         const media = await TipoMedia.find()
         .populate({
             path:'tipodirector',
-            match:{status:true}
+            match:{status:"true"}
         })
         .populate({
             path:'tipogenero',
-            match:{status:true}
+            match:{status:"true"}
         })
         .populate({
             path:'tipoproductora',
-            match: {status:true}
+            match: {status:"true"}
         })
         .populate({
             path:'tipo'
         })
 
-        res.status().json(media)
+        res.status(200).json(media)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e

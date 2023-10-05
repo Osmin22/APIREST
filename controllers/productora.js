@@ -58,8 +58,10 @@ const postTipoProductora = async (req=request,res=response) => {
 const putTipoProductora = async (req=request,res=response) => {
     try{
         const body = req.body
-        const _id = req.query
-        const productora = await TipoProductora.findByIdAndUpdate(_id,body)
+        const _id = req.query._id
+        body.datetimeupdate = new Date()
+
+        const productora = await TipoProductora.findByIdAndUpdate(_id,body,{new:true})
         return res.json(productora)
     }catch(e){
         return res.status(500).json({

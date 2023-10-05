@@ -54,7 +54,8 @@ const postTipo = async (req=request,res=response) => {
 const putTipo = async (req=request,res=response) => {
     try{
         const body = req.body
-        const _id = req.query
+        const _id = req.query._id
+        body.datetimeupdate = new Date()
 
         const tipo = await Tipo.findByIdAndUpdate(_id,body,{new:true})
         return res.json(tipo)
