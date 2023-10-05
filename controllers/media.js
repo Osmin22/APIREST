@@ -56,19 +56,19 @@ const gettipomedia = async (req = request,res = response) => {
     try{
         const media = await TipoMedia.find()
         .populate({
-            path:'TipoDirector',
+            path:'tipodirector',
             match:{status:true}
         })
         .populate({
-            path:'TipoGenero',
+            path:'tipogenero',
             match:{status:true}
         })
         .populate({
-            path:'TipoProductora',
+            path:'tipoproductora',
             match: {status:true}
         })
         .populate({
-            path:'Tipo'
+            path:'tipo'
         })
 
         res.status().json(media)
