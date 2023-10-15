@@ -66,4 +66,14 @@ const putgenero = async (req = request,res = response) => {
     }
 }
 
-module.exports = {getgenero,getgenerofirst,postgenero,putgenero}
+const deletegenero = async (req=request, res=response) => {
+    try{
+        const _id = req.query._id
+        const tipogenero = await TipoGenero.findByIdAndRemove(_id)
+        return res.status(200).json(tipogenero)
+    }catch(e){
+        console.log(e)
+    }
+
+} 
+module.exports = {getgenero,getgenerofirst,postgenero,putgenero,deletegenero}

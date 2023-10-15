@@ -71,7 +71,7 @@ const gettipomedia = async (req = request,res = response) => {
             path:'tipo'
         })
 
-        res.status(200).json(media)
+        return res.status(200).json(media)
     }catch(e){
         return res.status(500).json({
             status:'Not pettion'+e
