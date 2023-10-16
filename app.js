@@ -18,7 +18,7 @@ app.use('/api/v1/generos',genero)
 app.use('/api/v1/medias',media)
 app.use('/api/v1/productoras',productora)
 app.use('/api/v1/tipys',tipo)
-app.use('/api/v1/testing',testing)
+/* app.use('/api/v1/testing',testing) */
 
 
 module.exports = app
